@@ -1,0 +1,9 @@
+def calculrate_regtangle_area(x, y):
+    result = x * y
+    return result
+
+rectangle_x = 10
+rectangle_y = 20
+print("사각형의 x는 %d 입니다" %(rectangle_x))
+print("사각형의 y는 %d 입니다" %(rectangle_y))
+print("사각형의 넓이는 %d 입니다" %(calculrate_regtangle_area(rectangle_x,rectangle_y)))
