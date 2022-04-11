@@ -26,7 +26,7 @@ x = int(input("숫자를 입력 하세요 :"))
 print(is_odd(x))
 '''
 #입력으로 들어오는 모든 수의 평균 겂을 계산해주는 함수를 작성해보자
-
+'''
 def avg(*args):
     arr = []
     for i in args:
@@ -43,3 +43,9 @@ avg(1, 3, 5, 6, 6, 7, 9)
 
 print(f"평균 : {avg(1, 3, 5, 6, 6, 7, 9):.2f}")
 
+'''
+#다음 두 입력값의 오류를 수정해 보자
+input1 = int(input("첫번째 숫자를 입력하세요 :"))
+input2 = int(input("두번째 숫자를 입력하세요 :"))
+total = input1 +input2
+print(f"두 수의 합은 {total}입니다.")
