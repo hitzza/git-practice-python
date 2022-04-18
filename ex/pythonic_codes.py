@@ -79,7 +79,7 @@ result.sort()
 print(result)
 '''
 '''
-#two dimetional list
+#two dimentional list
 words = 'The quick brown fox jumps over the lazy dog'.split()
 #문장을 빈칸 기준으로 나눠 list로 변환
 print(words)
@@ -93,3 +93,31 @@ case_2 = ["C", "E", "A"]
 result = [[j + i for i in case_2] for j in case_1]
 pprint.pprint(result)
 '''
+#enumerate & zip
+'''
+my_str = "ABCD"
+print({v : i for i, v in enumerate(my_str)})
+
+text = "Samsung Group is a South Korean mulination conglomerate headquarterd in Samsung"
+text_list = list(set(text.split()))#set을 사용해서 중복 제거
+print({i : v.lower() for i , v in enumerate(text_list)})
+#zip 두개의 리스트를 병렬로 병합
+alist = ['a1', 'a2', 'a3']
+blist = ['b1', 'b2', 'b3']
+for a, b in zip(alist, blist):
+    print(a, b)
+for i , values in enumerate(zip(alist, blist)):
+    print(i, values)
+print([c for c in zip(alist, blist)])#튜플 타입으로 묶어서 c에 저장
+print(list(enumerate(zip(alist, blist))))#2dimentional listfh enumerate와 중복사용 가능
+
+math = (100 ,90, 80)
+kor = (90, 90, 90)
+eng = (90, 70 ,80)
+
+print([sum(value) / 3 for value in zip(math, kor, eng)])    
+
+a, b, c = zip((1, 10, 100), (2, 20, 200), (3, 30, 300))
+print(a)
+'''
+#lambda & map $ reduce
