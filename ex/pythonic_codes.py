@@ -1,4 +1,4 @@
-import pprint
+import pprint #print문 시각적으로 정렬해서 실행하는 모듈
 #XX
 '''
 colors = ['red', 'blue', 'green', 'yellow']
@@ -78,6 +78,7 @@ print(result)
 result.sort()
 print(result)
 '''
+'''
 #two dimetional list
 words = 'The quick brown fox jumps over the lazy dog'.split()
 #문장을 빈칸 기준으로 나눠 list로 변환
@@ -85,3 +86,10 @@ print(words)
 stuff = [[w.upper(), w.lower(), len(w)] for w in words]
 #list의 각 elemente들을 대문자, 소문자, 길이로 변환하여 two dimenstional list 로 변환
 pprint.pprint(stuff)
+
+case_1 = ["A", "B", "C"]
+case_2 = ["C", "E", "A"]
+
+result = [[j + i for i in case_2] for j in case_1]
+pprint.pprint(result)
+'''
