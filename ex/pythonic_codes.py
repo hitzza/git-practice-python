@@ -1,3 +1,4 @@
+from ast import arg
 from functools import reduce
 from operator import ge
 import pprint#print문 시각적으로 정렬해서 실행하는 모듈
@@ -198,4 +199,21 @@ def kwargs_text3(one, two, *args, **kwargs):
     print(one + two + sum(args))
     print(kwargs)
 
-print(kwargs_text3(3, 4, 5, 6, 7, 8, first = 1, second = 3, third = 5))
+print(kwargs_text3(3, 4, 5, 6, 7, 8, first = 1, second = 3, third = 5))# 순서 중요ty
+
+#asterlisk-nupacking a container
+
+def asterisk_test1(a, *args):
+    print(a, args)
+    print(a, *args)
+    print(type(args))
+
+def asterisk_test2(a, args):
+    print(a, *args)
+    print(type(args))
+
+print(asterisk_test1(1, *(2,3,4,5,6)))
+print(asterisk_test2(1, (2,3,4,5,6)))
+
+print(["1", "2", "3", "4", "5"])
+print(*["1", "2", "3", "4", "5"])#nupacking
