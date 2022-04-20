@@ -54,7 +54,8 @@ animals = [Cat('Missy'), Cat('Mr. Mistoffeless'), Dog('Lassie')]
 for animal in animals:
     print(animal.name + ':' + animal.talk())
 '''
-#visibility 
+#visibility ji
+'''
 class Product(object):
     pass
 
@@ -86,3 +87,42 @@ items = my_inventory.items
 items.append("aa")
 print(my_inventory)
 print(my_inventory.get_number_of_items())
+'''
+#decorator
+
+def star(func):
+    def inner(*args, **kwargs):
+        print("*" * 30)
+        func(*args, **kwargs)
+        print("*" * 30)
+    return inner
+
+
+def percent(func):
+    def inner(*args, **kwargs):
+        print("%" * 30)
+        func(*args, **kwargs)
+        print("%" * 30)
+    return inner
+
+@star
+@percent#2중 for문 같은 느낌?(실제로는 다름) function을 decorator에 종속시키는 느낌인듯
+def printer(msg):
+    print(msg)
+printer("Hello")
+
+
+def generate_power(exponent):#exponent = 2
+    def wrapper(f):#f = raise_two를 사용할 수 있음
+        def inner(*args):#*args = raise_two 의 parameter
+            result = f(*args)#result = raise_two(parameter) **2)
+            return exponent ** result #return = 2 ** (raise_two('parameter') **2)tlqkf 정확히는 raise_two 의argument exponent는 generator에 의해2로 고정
+        return inner
+    return wrapper 
+
+@generate_power(2)
+def raise_two(n):
+    return n**2
+
+print(raise_two(7))
+print(2 ** (7 ** 2 ))
