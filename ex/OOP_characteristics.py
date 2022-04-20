@@ -116,7 +116,7 @@ def generate_power(exponent):#exponent = 2
     def wrapper(f):#f = raise_two를 사용할 수 있음
         def inner(*args):#*args = raise_two 의 parameter
             result = f(*args)#result = raise_two(parameter) **2)
-            return exponent ** result #return = 2 ** (raise_two('parameter') **2)tlqkf 정확히는 raise_two 의argument exponent는 generator에 의해2로 고정
+            return exponent ** result #return = 2 ** (raise_two('parameter') **2)tlqkf 정확히는 raise_two 의argument이고, exponent는 generator에 의해2로 고정
         return inner
     return wrapper 
 
@@ -125,4 +125,4 @@ def raise_two(n):
     return n**2
 
 print(raise_two(7))
-print(2 ** (7 ** 2 ))
+print(2 ** (7 ** 2))
