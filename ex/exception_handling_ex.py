@@ -115,4 +115,55 @@ with open("read_file_test.text", mode = "a", encoding= "utf-8") as f:
         data = "{0}번째 줄입니다.\n".format(i)
         f.write(data)
 '''
-#3444
+#pickle
+#파이썬의 객체를 영속화(persistence)하는 built-in객체
+#메모리에 올라와있는 data, object등 실행중 정보를 저장->불러와서 사용
+#import pickle
+'''
+f = open("read_file_test.text", "wb")#w=write,b=binary
+test = [1, 2, 3, 4, 5]
+pickle.dump(test, f)
+f.close()
+'''
+'''
+f = open("read_file_test.text", "rb")#r=read,b=binary
+test_pickle = pickle.load(f)
+print(test_pickle)
+f.close()
+'''
+#logging 모듈
+'''
+import logging
+logging.debug("틀렸잖아!")#디버깅
+logging.info("확인해")#정보를 주는 것
+logging.warning("조심해")#exception처럼 무언가 잘못 되었을떄 보내는 것
+logging.error("에러 났어!")#에러가 난걸 알려줌
+logging.critical("망했다..")#프로그램이 완전히 종료가 되었을 때
+'''
+#logging level
+#debug > info > warning > error > critical
+#개발시점/   운영시점   /    사용자시점
+
+#debug = 개발시 처리 기록을 남겨야하는 로그 정보를 남김
+#info = 처리가 진행되는 동안의 정보를 알림
+#warning = 사용자가 잘못 입력한 정보나 처리는 가능하나 원래 개발시 의도치 않는 정보가 들어왔을 때 알림
+#error = 잘못된 처리로 인해 에러가 났으나, 프로그램은 동작할 수 있음을 알림
+#critical =  잘묏된 처리로 데이터 손실이나 더이상 프로그램이 동작할 수 없음을 알림
+
+import logging
+
+if __name__ == '__main__':
+    logger = logging.getLogger("main") #logger 선언
+    logging.basicConfig(level=logging.DEBUG)#사용자level에선 warning부터 보여주지만 basicconfig을 사용해 레벨을 조정 가능
+    #logger.setLevel(logging.ERROR)
+
+    stream_handler = logging.FileHandler( #출력을 어떻게 할지 정하는 것
+        "my.log", mode="a", encoding="utf-8" #my.log라는 파일에 출력
+    )
+    logger.addHandler(stream_handler)
+
+    logging.debug("틀렸잖아!")
+    logging.info("확인해")
+    logging.warning("조심해")
+    logging.error("에러 났어!")
+    logging.critical("망했다..")
