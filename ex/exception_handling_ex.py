@@ -158,7 +158,7 @@ if __name__ == '__main__':
     #logger.setLevel(logging.ERROR)
 
     stream_handler = logging.FileHandler( #출력을 어떻게 할지 정하는 것
-        "my.log", mode="a", encoding="utf-8" #my.log라는 파일에 출력
+        "my.log", mode="a", encoding="utf-8" #my.log라는 파일에 출력, a= append의 약자 w로 write형태도 가능
     )
     logger.addHandler(stream_handler)
 
