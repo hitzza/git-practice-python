@@ -1,3 +1,4 @@
+from traceback import print_tb
 import numpy as np
 #numpy
 '''
@@ -113,8 +114,17 @@ print(test_a * test_a)#matrix내 element들 간 같은 위치에 있는 값들�
 '''
 
 #Dot product - matirx의 기본연산(dot함수 사용)
-test_a = np.arange(1,7).reshape(2,3)
+'''test_a = np.arange(1,7).reshape(2,3)
 test_b = np.arange(7,13).reshape(3,2)
 print(test_a)
 print(test_b)
 print(test_a.dot(test_b))#일반 행렬 곱
+'''
+
+#broadcating- shape이 다른 배열 간 연산을 지원하는 기능
+#scalar - vector 외에도, vector - matrix 간의 연산도 지원
+test_matrix = np.array([[1,2,3], [4,5,6], [7,8,9]],float)
+scalar = 3
+print(test_matrix + scalar)
+print(test_matrix * scalar)
+#40.00
