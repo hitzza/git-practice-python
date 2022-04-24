@@ -90,6 +90,7 @@ print(a.sum(axis=1))#column 기준으로 sum
 #concatenate - numpy array를 합치는 함수
 #vstack - axis=0을 기준으로 concat
 #hstack - axis=1을 기준으로 concat
+'''
 a = np.array([1,2,3])#vector
 b = np.array([4,5,6])#vector
 
@@ -100,3 +101,20 @@ b = np.array([[4],[5],[6]])
 print(np.hstack((a,b)))
 
 print(np.concatenate((a,b), axis= 1))
+'''
+#operation b/t arrays
+#Element-wise operation - array간 shape이 같을 때 일어나는 연산
+'''
+test_a = np.array([[1,2,3], [4,5,6], [7,8,9]],float)
+print(test_a)
+print(test_a + test_a)#matrix + matrix 연산
+print(test_a - test_a)#matrix - matrix 연산
+print(test_a * test_a)#matrix내 element들 간 같은 위치에 있는 값들끼리 연산
+'''
+
+#Dot product - matirx의 기본연산(dot함수 사용)
+test_a = np.arange(1,7).reshape(2,3)
+test_b = np.arange(7,13).reshape(3,2)
+print(test_a)
+print(test_b)
+print(test_a.dot(test_b))#일반 행렬 곱
