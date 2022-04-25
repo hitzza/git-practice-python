@@ -132,6 +132,7 @@ print(test_matrix * scalar)
 #concat은 numpy에서는 비효율적
 
 #comparisons 비교
+'''
 #all & any
 a = np.arange(10)
 print(a>5)#broadcasting형식으로 비교한다고 생각하면 됨
@@ -144,3 +145,50 @@ print(np.all(a>5), np.all(a < 10))
 a = np.array([1,3,0])
 print(np.where(a > 0, 3,2))#where(조건, true일 경우 리턴값, false일 경우 리턴값)
 print(np.where(a > 0))#리턴 값을 설정 안할경우 true의 Index값을 반환 false는 아무거도 반환하지 않음
+'''
+#argmax & argmin 
+'''
+#array내 최대값 또는 최소값으 index를 반환함
+a = np.array([1,2,4,5,7,14,66,73,88,3])
+print(np.argmax(a))#최대값의 index번호
+print(np.argmin(a))#최소값의 index번호
+#axis를 이용해 axis축에 맞는 최소 최대값 찾기 가능
+a = np.array([[1,3,5],
+             [2,6,0],
+             [9,15,7]])
+print(np.argmax(a, axis= 0))#최대값의 index번호
+print(np.argmin(a, axis= 0))#최소값의 index번호
+#일반적인 axis와 기준이 반대인듯
+'''
+#boolean index- numpy 배열은 특정 조건에 따른 값을 배열 형태로 추출 할 수 있음
+#comparison operation함수들도 모두 사용 가눙
+'''
+test_array = np.array([1,3,4,9,0,12,2],float)
+print(test_array > 3)
+print(test_array[test_array > 3])
+condition = test_array > 3
+print(test_array[condition])
+print(condition.astype(np.int0))#0,1아웃풋으로도 수정 가능!
+'''
+#fancy index - numpy는 array를 index value로 사용해서 값을 추출하는 방법
+a = np.array([2,4,6,8], float)
+b = np.array([0,0,1,3,2,1], int)#반드시 int형으로 선언
+print(a[b])#b 배열의 값을 index로 하여 a의 값들을 추출함
+print(a.take(b))#위와 같은 효과
+a = np.array([[1,4], [9,16]], float)
+b = np.array([0,0,1,1,0], int)
+c = np.array([0,1,1,1,1], int)
+print(a[b,c])# b를 row index, c를 column index로 변환하여 표시함
+#[(0,0), (0,1), (1,1), (1,1), (0,1)]
+#[  1       4      16   16      4]
+
+#numpy object - npy
+#numpy object(pickle)형태롤 데이터를 저장하고 불러옴
+#binary형태로 저장함
+#a_int = np.array([[1900, 30000, 4000, 48300],
+#                  [1901, 47200, 6100, 48200],
+#                  [1902, 70200, 9800, 41500]])
+#np.save("npy_test", arr=a_int)
+
+npy_array = np.load(file="npy_test.npy")
+print(npy_array[:])
