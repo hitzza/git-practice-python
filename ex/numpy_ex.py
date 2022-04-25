@@ -123,8 +123,24 @@ print(test_a.dot(test_b))#일반 행렬 곱
 
 #broadcating- shape이 다른 배열 간 연산을 지원하는 기능
 #scalar - vector 외에도, vector - matrix 간의 연산도 지원
+'''
 test_matrix = np.array([[1,2,3], [4,5,6], [7,8,9]],float)
 scalar = 3
 print(test_matrix + scalar)
 print(test_matrix * scalar)
-#40.00
+'''
+#concat은 numpy에서는 비효율적
+
+#comparisons 비교
+#all & any
+a = np.arange(10)
+print(a>5)#broadcasting형식으로 비교한다고 생각하면 됨
+#any = 하나라도 만족되면 TRUE
+print(np.any(a>5), np.any(a < 0))
+#all = 모두 만족되면 TRUE
+print(np.all(a>5), np.all(a < 10))
+
+#np.where - 조건에 만족하는 index값을 반환
+a = np.array([1,3,0])
+print(np.where(a > 0, 3,2))#where(조건, true일 경우 리턴값, false일 경우 리턴값)
+print(np.where(a > 0))#리턴 값을 설정 안할경우 true의 Index값을 반환 false는 아무거도 반환하지 않음
