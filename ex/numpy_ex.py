@@ -157,7 +157,7 @@ a = np.array([[1,3,5],
              [9,15,7]])
 print(np.argmax(a, axis= 0))#최대값의 index번호
 print(np.argmin(a, axis= 0))#최소값의 index번호
-#일반적인 axis와 기준이 반대인듯
+
 '''
 #boolean index- numpy 배열은 특정 조건에 따른 값을 배열 형태로 추출 할 수 있음
 #comparison operation함수들도 모두 사용 가눙
