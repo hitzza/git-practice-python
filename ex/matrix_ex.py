@@ -14,3 +14,18 @@ print(x @ y)#numpy에선 행렬곱에 @연산 사용
 #그래서 y는 전치행렬을 사용해야함!★★
 print(np.inner(x, y.T))#.T함수는 전치행렬
 #22.00
+
+print(np.linalg.inv(x))#np.linalg.inv()역행렬
+#역행렬은 행렬의 n과m이 같아야하고 determinant가 0이 아니어야함
+print(x @ np.linalg.inv(x))#행렬 * 역행렬 = 항등행렬
+
+#만약 역행렬을 계산할 수 없다면 유사 역행렬(pseudo-inverse)또는
+#무어-펜로즈(Moore-Penrose)역행렬 A+을 이용한다
+#n >= m인 경우 A+ = (AT*A)-1승 * AT
+#n <= m인 경우 A+ =  AT * (A*AT)-1승
+#n >= m이면 A+ * A = I가 성립한다
+#n <= m이면 A * A+ = I가 성립한다
+
+print(np.linalg.pinv(y))#n=m이 아닐 때 역행렬
+print(np.linalg.pinv(y) @ y) #n>=m이기 때문에 np.linalg.pinv(y) @ y
+ #n<=m이면 y @ np.linalg.pinv(y)
