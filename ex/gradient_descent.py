@@ -1,3 +1,4 @@
+from mimetypes import init
 import sympy as sym #sympy = 미분함수
 from sympy.abc import x, y #import한 기호를 실제 방정식 기호처럼 사용가능하게 하는 모듈
 import numpy as np
@@ -47,4 +48,47 @@ gradient_descent(fun = func, init_point= np.random.uniform(-2,2))
 '''
 
 #변수가 벡터일 경우(변수의 방향이 여러 방향) 편미분을 사용
-print(sym.diff(sym.poly(x**2 + 2*x*y + 3) * sym.cos(x + 2*y), x))
+#print(sym.diff(sym.poly(x**2 + 2*x*y + 3) * sym.cos(x + 2*y), x))
+#경사 하강법 알고리즘
+#Input : gradient, init, lr, eps
+#Output : var
+#gradient - 그레디언트 벡터를 계산하는 함수, init - 시작점, lr -학습률, eps - 알고리즘 종료 조건
+#경사 하강법 알고리즘은 그대로 적용된다. 그러나 벡터는 절대값 대신 노름(norm)을 계산해서 종료 조건을 설정한다.
+'''
+var = init
+grad = gradient(var)
+while(norm(grad) > eps):
+    var = var - lr * grad
+    grad = gradient(var)
+'''
+def eval_(fun, val):
+    val_x, val_y = val#입력받은 벡터값 val_x, val_y에 할당
+    fun_eval = fun.subs(x, val_x).subs(y, val_y)#x,y에 val_x,val_y값 대입
+    return fun_eval
+
+def func_multi(val):
+    x_, y_ = val
+    func = sym.poly(x**2 + 2*y**2)
+    return eval_(func, [x_, y_]), func #미분한 값을 리턴
+
+def func_gradient(fun, val):
+    x_, y_ = val
+    _, function = fun(val)
+    diff_x = sym.diff(function, x)
+    diff_y = sym.diff(function, y)
+    grad_vec = np.array([eval_(diff_x, [x_, y_]), eval_(diff_y, [x_, y_])], dtype=float)
+    return grad_vec, [diff_x, diff_y] #x,y 각각 편미분한 값을 np.array 형태로 반환
+
+def gradient_descent(fun, init_point, lr_rate = 1e-2, epsilon =1e-5):
+    cnt = 0#횟수 카운트
+    val = init_point
+    diff, _ = func_gradient(fun, val)
+    while np.linalg.norm(diff) > epsilon:
+        val = val - lr_rate *diff
+        diff, _ = func_gradient(fun, val)
+        cnt += 1
+    
+    print("함수: {}, 연산횟수: {}, 최소점: ({}, {})".format(fun(val)[1], cnt, val, fun(val)[0]))
+
+pt = [np.random.uniform(-2, 2), np.random.uniform(-2, 2)]
+gradient_descent(fun = func_multi, init_point= pt)
