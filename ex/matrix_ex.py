@@ -28,4 +28,17 @@ print(x @ np.linalg.inv(x))#행렬 * 역행렬 = 항등행렬
 
 print(np.linalg.pinv(y))#n=m이 아닐 때 역행렬
 print(np.linalg.pinv(y) @ y) #n>=m이기 때문에 np.linalg.pinv(y) @ y
- #n<=m이면 y @ np.linalg.pinv(y)
+#n<=m이면 y @ np.linalg.pinv(y)
+
+#Scikit Learn을 활용한 회귀분석
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+x_test = model.fit(x,y)
+y_test = model.predict(x_test)
+print(y_test)
+
+#Moore-Penrose 역행렬
+#moore-penrose를 사용할때는 y절편(intercept)항울 직접 추가해야한다!
+x_ = np.array([np.append(x,[1]) for x1 in x])#intercept항 추가
+beta = np.linalg.pinv(x_) @ y
+y_test = np.append(x, [1]) @ beta
