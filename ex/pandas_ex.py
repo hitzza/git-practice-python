@@ -27,6 +27,7 @@ print(example_obj)
 #exam_obj = pd.Series(data = df_data['CRIM'])
 #print(exam_obj)
 '''
+'''
 #DataFrame
 raw_data = {'first_name': ['Jason', 'Molly', 'Tina', 'Jake', 'Amy'],
         'last_name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze'],
@@ -61,3 +62,11 @@ print(test_debt.values)#values를 사용해서 ndarray로 바꿀 수 있음
 print(test_debt.to_csv())#csv형태로 변환도 가능
 del test_debt["debt"]#Column을 삭제함
 print(test_debt)
+'''
+#selection - indexing이랑 비슷함
+df["account"].head(3)#한개의 Column 선택시 하나의 string값만 넣음
+#output이 Series
+df[["account","street","state"]].head(3)# 1개 이상의 column 선택시 two dimensional array로 해주어야함!
+#output이 DataFrame
+df[:3]#column 이름 없이 사용하는 index number는 row를 기준으로 표시
+df["account"][:3]#column명과 함께 row index 사용시, 해당 column만 출력
