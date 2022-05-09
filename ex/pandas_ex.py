@@ -105,3 +105,21 @@ print(df_data.head())#drop function을 사용해도 원본 데이터를 건들�
 df_data.drop("ZN", axis=1, inplace=True)#inplace=True를 사용해야 원본 데이터가 바뀜
 print(df_data.head())
 '''
+'''
+#series operation
+s1 = Series(range(1,6), index = list("abced"))
+print(s1)
+s2 = Series(range(5,11), index= list("bcedef"))
+print(s2)
+print(s1.add(s2))#index 기준으로 연산 수행
+print(s1 + s2)#겹치는 index가 없을 경우 NaN값으로 반환
+'''
+#Dataframe operation
+df1 = DataFrame(np.arange(9).reshape(3,3), columns=list("abc"))
+print(df1)
+
+df2 = DataFrame(np.arange(16).reshape(4,4),columns=list("abcd"))
+print(df2)
+
+print(df1 + df2)
+print(df1.add(df2, fill_value=0))#fill_value 0 - add operation의 fill_value값을 쓰면 NaN값을 0으로 변환
