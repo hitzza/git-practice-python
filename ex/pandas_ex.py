@@ -73,9 +73,11 @@ df[:3]#column 이름 없이 사용하는 index number는 row를 기준으로 표
 df["account"][:3]#column명과 함께 row index 사용시, 해당 column만 출력
 
 '''
+
 data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data' #Data URL
 df_data = pd.read_csv(data_url, sep='\s+', header = None)
 df_data.columns = ['CRIM','ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO' ,'B', 'LSTAT', 'MEDV']#순서대로 컬럼명 지정
+'''
 crim_serires = df_data["CRIM"]
 
 print(crim_serires[:3])
@@ -93,3 +95,13 @@ print(df_data.loc[[0.02731, 0.02729], ["ZN", "INDUS"]])#해당 index 이름과 c
 print(df_data.iloc[:2, :2])#해당 index number와 column number
 #iloc은 column이 적을 때 편함
 #column이 많아지면 loc을 많이 쓴다
+
+df_data.index = list(range(0,506))#index재설정
+print(df_data.head())
+print(df_data.drop(1))#index number로 drop
+print(df_data.drop([0,1,2,3]))#한개 이상의 index number로 drop
+print(df_data.drop("ZN", axis=1))#axis 지정으로 축을 기준으로 drop -> column중에 city
+print(df_data.head())#drop function을 사용해도 원본 데이터를 건들지 않음
+df_data.drop("ZN", axis=1, inplace=True)#inplace=True를 사용해야 원본 데이터가 바뀜
+print(df_data.head())
+'''
