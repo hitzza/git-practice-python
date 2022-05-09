@@ -63,6 +63,7 @@ print(test_debt.to_csv())#csv형태로 변환도 가능
 del test_debt["debt"]#Column을 삭제함
 print(test_debt)
 '''
+'''
 #selection - indexing이랑 비슷함
 df["account"].head(3)#한개의 Column 선택시 하나의 string값만 넣음
 #output이 Series
@@ -70,3 +71,25 @@ df[["account","street","state"]].head(3)# 1개 이상의 column 선택시 two di
 #output이 DataFrame
 df[:3]#column 이름 없이 사용하는 index number는 row를 기준으로 표시
 df["account"][:3]#column명과 함께 row index 사용시, 해당 column만 출력
+
+'''
+data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data' #Data URL
+df_data = pd.read_csv(data_url, sep='\s+', header = None)
+df_data.columns = ['CRIM','ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO' ,'B', 'LSTAT', 'MEDV']#순서대로 컬럼명 지정
+crim_serires = df_data["CRIM"]
+
+print(crim_serires[:3])
+print(crim_serires[[0,1,2,5]])#2 dimension array로 해당index값의 series 출력 가능
+print(crim_serires[crim_serires < 0.02])#Boolean index도 가능!
+
+df_data.index = df_data["CRIM"]#index번호가 해당column값으로 변경
+
+print(df_data.head())#CRIM column이 남아있기 떄문에
+del df_data["CRIM"] #del을 사영해서 제거
+print(df_data.head())#이제 CRIM column이 없음
+
+print(df_data[["ZN", "INDUS"]][:0.02729])#.loc과 같이 index의 이름으로 범위설정 해야함!
+print(df_data.loc[[0.02731, 0.02729], ["ZN", "INDUS"]])#해당 index 이름과 column명으로 값 출력 가능
+print(df_data.iloc[:2, :2])#해당 index number와 column number
+#iloc은 column이 적을 때 편함
+#column이 많아지면 loc을 많이 쓴다
