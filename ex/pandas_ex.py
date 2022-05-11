@@ -73,11 +73,11 @@ df[:3]#column 이름 없이 사용하는 index number는 row를 기준으로 표
 df["account"][:3]#column명과 함께 row index 사용시, 해당 column만 출력
 
 '''
+'''
 
 data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data' #Data URL
 df_data = pd.read_csv(data_url, sep='\s+', header = None)
 df_data.columns = ['CRIM','ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO' ,'B', 'LSTAT', 'MEDV']#순서대로 컬럼명 지정
-'''
 crim_serires = df_data["CRIM"]
 
 print(crim_serires[:3])
@@ -114,7 +114,9 @@ print(s2)
 print(s1.add(s2))#index 기준으로 연산 수행
 print(s1 + s2)#겹치는 index가 없을 경우 NaN값으로 반환
 '''
+'''
 #Dataframe operation
+#operation types : add, sub, div, mul
 df1 = DataFrame(np.arange(9).reshape(3,3), columns=list("abc"))
 print(df1)
 
@@ -123,3 +125,19 @@ print(df2)
 
 print(df1 + df2)
 print(df1.add(df2, fill_value=0))#fill_value 0 - add operation의 fill_value값을 쓰면 NaN값을 0으로 변환
+'''
+#Series + DataFrame column!을 기준으로 broadcasting이 발생함
+df = DataFrame(
+        np.arange(16).reshape(4,4),
+        columns=list("abcd")
+)
+print(df)
+s = Series(
+        np.arange(10,14),
+        index=list("abcd")
+)
+print(s)
+print(df.add(s))#column을 기준으로 broadcasting이 발생
+s2 = Series(np.arange(10,14))
+print(df.add(s2, axis = 0))#axis = 0을 사용해서 row를 기준으로도 broadcasting이 가능
+#Series + DataFrame을 합칠 때 row index명과 column명이 같아야 하는듯
