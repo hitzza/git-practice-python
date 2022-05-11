@@ -126,6 +126,7 @@ print(df2)
 print(df1 + df2)
 print(df1.add(df2, fill_value=0))#fill_value 0 - add operation의 fill_value값을 쓰면 NaN값을 0으로 변환
 '''
+'''
 #Series + DataFrame column!을 기준으로 broadcasting이 발생함
 df = DataFrame(
         np.arange(16).reshape(4,4),
@@ -141,3 +142,52 @@ print(df.add(s))#column을 기준으로 broadcasting이 발생
 s2 = Series(np.arange(10,14))
 print(df.add(s2, axis = 0))#axis = 0을 사용해서 row를 기준으로도 broadcasting이 가능
 #Series + DataFrame을 합칠 때 row index명과 column명이 같아야 하는듯
+'''
+'''
+#lambda 함수
+#lambda argument : expression
+
+#map for series
+#Pandas의 series type의 데이터에도 map 함수 사용 가능
+#function 대신 dict, sequence형 자료등으로 대체 가능
+s1 = Series(np.arange(7,17))
+print(s1.head(10))
+print(s1.map(lambda x : x**2).head(5))
+
+#dict type으로 데이터 교체
+z = {1:'A', 2:'B', 3:'C'}
+print(s1.map(z).head(5))#없는 값은 NaN, s1의  원소 번호 = z의 key 값으로 mapping이 일어남
+
+s2 = Series(np.arange(10,20))
+
+print(s1)
+print(s2)
+print(s1.map(s2).head(10))#s1의 value에 맞는 s2의 index값을 가진 s2의 value를 return
+print(s2.map(s1).head(10))#s2의 value에 맞는 s1의 index값이 없어서 모두 NaN을 return
+'''
+#apply for dataframe
+#map은 series data의 element단위로 함수를 적용시켰지만
+#apply는 map과 달리,Series 전체(column)에 해당 함수를 적용
+#입력값이 series 데이터로 입력받아 handling 가능
+
+data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data' #Data URL
+df_data = pd.read_csv(data_url, sep='\s+', header = None)
+df_data.columns = ['CRIM','ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO' ,'B', 'LSTAT', 'MEDV']#순서대로 컬럼명 지정
+'''
+f1 = lambda x : x.max() - x.min()
+
+print(df_data.apply(f1))
+#scalar 값 이외에 series값의 반환도 가능함
+def f(x):
+    return Series([x.min(), x.max()], index=["min", "max"])
+print(df_data.apply(f))
+'''
+'''
+#applymap for dataframe
+#series 단위가 아닌 element단위로 함수를 적용함
+f = lambda x : -x
+print(df_data.applymap(f))
+#series 단위에 apply를 적용시킬 때와 같은 효과
+print(df_data["CRIM"].apply(f))
+#applymap은 전체 데이터를 뽑을 떄 유용하고, apply는 통계 데이터를 뽑을 때 유용
+# '''
