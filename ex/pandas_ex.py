@@ -190,4 +190,15 @@ print(df_data.applymap(f))
 #series 단위에 apply를 적용시킬 때와 같은 효과
 print(df_data["CRIM"].apply(f))
 #applymap은 전체 데이터를 뽑을 떄 유용하고, apply는 통계 데이터를 뽑을 때 유용
-# '''
+'''
+#built-in
+print(df_data.describe())#describe함수 -데이터의 요약 정보를 보여줌
+print(df_data.unique())#series data의 유일한 값을 list를 반환함, 현재 데이터엔 유일한 값이 없어서 attribute error
+
+np.array(dict(enumerate(df_data["CRIM"].unique())))#dict type으로 index
+
+#label index값과 label값 각각 추출
+value = list(map(int, np.array(list(enumerate(df_data["CRIM"].unique())))[:,0].tolist()))
+key = np.array(list(enumerate(df_data["CRIM"].unique())), dtype=str)[:,1].tolist()
+#복잡하다..
+print(value, key)
