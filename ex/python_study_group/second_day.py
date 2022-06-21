@@ -41,6 +41,7 @@ def print_n_time(n, *values):
             print()
 print_n_time(3, "안녕하세요", "즐거운", "파이썬 프로그래밍")
 '''
+
 def test():
     print("A지점 통과")
     yield 1

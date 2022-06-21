@@ -4,6 +4,7 @@ import datetime
 #입력 자료형 확인하기 
 string = input("입력>")
 
+
 #출력합니다.
 print("입력값:", string)
 print("자료형:", type(string))
@@ -49,12 +50,14 @@ elif 9 <= month <= 11:
     print("현재는 가을입니다.")
 else:
     print("현재는 겨울입니다.")
-'''
-'''
+
 list_a = [1,2,3,4,5]
 del list_a[1]
 print(list_a)
-'''
+
 array = [273, 32, 103, 57, 52]
 for element in array:
     print(element)
+'''
+
+print(3//2)
