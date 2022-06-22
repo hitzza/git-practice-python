@@ -19,9 +19,9 @@ def kwpacking(**kwargs):
     print(type(kwargs))
 
 kwpacking(a=1,b=2,c=3)#dict type
-'''
+
 
 a = [1,2,3,4,4,5,1,2]
 
 print(set(a))
-print(1e-2)
+'''
