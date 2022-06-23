@@ -91,3 +91,17 @@ else:
     h %= 24
     print(h,m)
 '''
+#2480
+
+d1, d2, d3 = map(int,input().split())
+check_max = [d1,d2,d3]
+if d1 == d2 == d3:
+    print(10000 + d1 * 1000)
+elif d1 == d2:
+    print(1000 + d1 *100)
+elif d1 == d3:
+    print(1000 + d1 *100)
+elif d2 == d3:
+    print(1000 + d2 *100)
+else:
+    print(max(check_max)*100)
