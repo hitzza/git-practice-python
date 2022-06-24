@@ -59,11 +59,75 @@ for i in range(input_num):
     print(i.rjust(input_num))
 '''
 #10871
+'''
 a,b = map(int,input().split())
 c = list(map(int,input().split()))
-
 result = []
 for i in range(a):
     if c[i] < b:
         result.append(c[i])
 print(*result)
+'''
+#10952
+'''
+while True:
+    a, b = map(int,input().split())
+
+    if a == 0 and b == 0:
+        break
+    else:
+        print(a + b)
+'''
+#10951
+'''
+while True:
+    try:
+        a, b = map(int,input().split())
+        print(a + b)
+    except EOFError:
+        break
+'''
+#1110
+'''
+a = int(input())
+check_a = a
+count = 0
+if 0 <= a <= 99:
+    while True:
+        if a < 10:
+            a = str(a).rjust(2,'0')
+            b = int(a[0]) + int(a[1])
+            a = int(a[1] + str(b%10))
+            count += 1
+            if a == check_a:
+                print(count)
+                break
+        elif a > 10:
+            a = str(a)
+            b = int(a[0]) + int(a[1])
+            a = int(a[1] + str(b%10))
+            count += 1
+            if a == check_a:
+                print(count)
+                break
+#timeout!
+'''
+a = int(input())
+check_a = a
+count = 0
+if 0 <= a <= 99:
+    while True:
+        if a < 10:
+            a = int(str(a) + str(a))
+            count += 1
+            if a == check_a:
+                print(count)
+                break
+        else:
+            b = (a//10) + (a%10)
+            a = str(a%10) + str(b%10)
+            a = int(a)
+            count += 1
+            if a == check_a:
+                print(count)
+                break
