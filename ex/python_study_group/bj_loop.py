@@ -112,6 +112,7 @@ if 0 <= a <= 99:
                 break
 #timeout!
 '''
+'''
 a = int(input())
 check_a = a
 count = 0
@@ -131,3 +132,4 @@ if 0 <= a <= 99:
             if a == check_a:
                 print(count)
                 break
+'''
