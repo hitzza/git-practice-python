@@ -28,3 +28,35 @@ for i in str_mul:
 for j in count:
     print(j)
 '''
+#3052
+'''
+num_list = []
+for i in range(10):
+    num_list.append(int(input())%42)
+num_list = set(num_list)
+print(len(num_list))
+'''
+#1546
+'''
+a = int(input())
+score = list(map(int, input().split()))
+result = 0
+for i in score:
+    result += i / max(score) * 100
+print(result/a)
+'''
+#8958
+a = int(input())
+count = 1
+score = 0
+for i in range(a):
+    input_list = list(input().upper())
+    for j in input_list:
+        if j =='O':
+            score += count
+            count += 1
+        else :
+            count = 1
+    print(score)
+    score = 0
+    count = 1
