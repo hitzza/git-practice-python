@@ -46,6 +46,7 @@ for i in score:
 print(result/a)
 '''
 #8958
+'''
 a = int(input())
 count = 1
 score = 0
@@ -60,3 +61,17 @@ for i in range(a):
     print(score)
     score = 0
     count = 1
+'''
+#4344
+a = int(input())
+result = 0
+count = 0
+for i in range(a):
+    input_list = list(map(int,input().split()))
+    result = sum(input_list)-input_list[0]
+    for k in input_list:
+        if k > result/input_list[0]:
+            count += 1       
+    print(f"{round((count/input_list[0])* 100,3)}%")
+    result = 0
+    count = 0
