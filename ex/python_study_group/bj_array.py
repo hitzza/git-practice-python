@@ -63,15 +63,36 @@ for i in range(a):
     count = 1
 '''
 #4344
+'''
 a = int(input())
 result = 0
 count = 0
 for i in range(a):
     input_list = list(map(int,input().split()))
     result = sum(input_list)-input_list[0]
-    for k in input_list:
+    for k in input_list[1:]:
         if k > result/input_list[0]:
             count += 1       
-    print(f"{round((count/input_list[0])* 100,3)}%")
+    print(f"{round((count/input_list[0]),5)* 100:.3f}%")
+    #print("{0:.3f}%".format(round((count/input_list[0]),3)* 100))
     result = 0
     count = 0
+'''
+#10802
+'''
+a, b = map(int, input().split())
+count = 0
+s_count = 0
+for i in range(a, b+1):
+    if i % 3 == 0:
+        count += 1
+    else:
+        for j in str(i):
+            if int(j) % 3 == 0:
+                s_count = 1
+                break
+    count += s_count
+    s_count = 0            
+            
+print(count%20150523)
+'''
