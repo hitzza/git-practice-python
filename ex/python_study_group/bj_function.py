@@ -5,6 +5,7 @@ def solve(a):
     return ans
 '''
 #4673
+'''
 natural_num = set(range(1,10001))
 general_num = set()
 
@@ -15,3 +16,4 @@ for i in range(1,10001):
 self_num = sorted(natural_num - general_num)
 for i in self_num:
     print(i)
+'''
