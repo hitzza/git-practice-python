@@ -41,3 +41,30 @@ print(frame.head(2))
 print(frame.tail(2))
 '''
 #loc = index이름으로 추출, iloc = index주소로 추출
+'''
+data = {'이름':['유재석', '박명수', '정형돈','하하'],
+    '나이':[35, 60, 52, 38],
+    '키':[180, 175, 160, 150]}
+frame = pd.DataFrame(data, index = ['첫째','둘째','셋째','넷째'])
+print(frame)
+print(frame.loc['둘째','이름'])
+print(frame.loc['넷째', ['나이', '키']])
+print('-'*30)
+print(frame.iloc[2,0])
+print(frame.iloc[3,:2])
+print(frame.iloc[:,[0,2]])
+'''
+#합계와 평균/정력하기
+data = {'이름':['유재석', '박명수', '정형돈','하하'],
+    '나이':[35, 60, 52, 38],
+    '키':[180, 175, 160, 150]}
+frame = pd.DataFrame(data)
+frame_2 = frame.iloc[:,[1,2]]
+rank = frame.sort_values(by=['나이'],ascending=False)#ascending=False는 내림차순으로 정렬
+total = frame_2.sum(axis=0)
+avg = frame_2.mean(axis=0)
+
+print(frame_2)
+print(rank)
+print(total)
+print(avg)
