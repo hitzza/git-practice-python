@@ -36,3 +36,14 @@ print(data_2)
 print(data_3)
 print(data > data_2)
 '''
+data = np.array([[5,7,9],
+                [-7,-6,19],
+                [6,8.9,11]])
+print(data)
+print(data.sum())
+print(data.mean())
+print(data.max())
+print(data.min())
+print(data.max(axis=0))
+index_1 = np.argmax(data,axis=0)#가장 높은값의 index출력
+print(index_1)

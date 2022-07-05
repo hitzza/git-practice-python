@@ -78,14 +78,13 @@ print(np.random.normal(0,1,10).reshape(2,5))#정규분포
 '''
 
 #aixs 0= row, 1 = column ☆
-'''
+
 a = np.array([[1,2,3,4,5],
               [6,7,8,9,10]],int)
 print(a.sum(axis=0))#row 기준으로 sum
 print(a.sum(axis=1))#column 기준으로 sum
 #(3,3,4)tensor의 형태면 axis(0,1,2)순서로 하나씩 밀린다 생각하면됨
 #(3,4)matrix의 형태면 axis(0,1)
-'''
 
 #concatenate - numpy array를 합치는 함수
 #vstack - axis=0을 기준으로 concat
@@ -169,6 +168,7 @@ condition = test_array > 3
 print(test_array[condition])
 print(condition.astype(np.int0))#0,1아웃풋으로도 수정 가능!
 '''
+'''
 #fancy index - numpy는 array를 index value로 사용해서 값을 추출하는 방법
 a = np.array([2,4,6,8], float)
 b = np.array([0,0,1,3,2,1], int)#반드시 int형으로 선언
@@ -180,7 +180,7 @@ c = np.array([0,1,1,1,1], int)
 print(a[b,c])# b를 row index, c를 column index로 변환하여 표시함
 #[(0,0), (0,1), (1,1), (1,1), (0,1)]
 #[  1       4      16   16      4]
-
+'''
 #numpy object - npy
 #numpy object(pickle)형태롤 데이터를 저장하고 불러옴
 #binary형태로 저장함
@@ -188,6 +188,7 @@ print(a[b,c])# b를 row index, c를 column index로 변환하여 표시함
 #                  [1901, 47200, 6100, 48200],
 #                  [1902, 70200, 9800, 41500]])
 #np.save("npy_test", arr=a_int)
-
+'''
 npy_array = np.load(file="npy_test.npy")
 print(npy_array[:])
+'''
