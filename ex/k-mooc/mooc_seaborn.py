@@ -1,4 +1,5 @@
 import seaborn as sns
+import matplotlib as plt
 '''
 iris = sns.load_dataset("iris")
 sns.displot(iris["sepal_width"],
@@ -46,3 +47,4 @@ flights = sns.load_dataset('flights')
 flight = flights.pivot('month','year','passengers')
 sns.heatmap(flight,annot=True,fmt='d')#annot=true숫자표시여부,fmt='d'정수형 데이터
 '''
+#plt.show()
