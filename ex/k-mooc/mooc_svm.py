@@ -3,13 +3,12 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
-import numpy as np
 import pandas as pd
 
 def svc_parm_selection(X,y,nfold):#그리드 서치를 이용한 최적의 파라미터값과 결과를 출력과 리턴해주는 함수
     svm_pararmeters = [{'kernel' : ['rbf'],
             'gamma' : [0.00001, 0.0001, 0.001, 0.01, 0.1, 1],#감마 값
-            'C' : [0.01, 0.1,1,10,100,1000]}]#코스트 값
+            'C' : [0.01, 0.1, 0.8,1,1.2, 1.4, 1.6]}]#코스트 값
     clf = GridSearchCV(SVC(), svm_pararmeters, cv = nfold)#그리드 서치를 이용해서 최적의 파라미터값을 출력
     clf.fit(X,y)
     print(clf.best_params_)
