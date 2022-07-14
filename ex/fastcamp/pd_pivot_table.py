@@ -36,3 +36,7 @@ print(ex_df1)
 #피벗 테이블 대상 컬럼이 두개 이상일 때
 ex_df2 = pd.pivot_table(ex_df, index='품목', columns='크기', aggfunc={'금액': ['count','sum'], '수수료': 'sum'})
 print(ex_df2)#values를 없애고 aggfunc에 dict형으로 선언
+#print(ex_df2.columns)
+ex_df2.columns = ['_'.join(col) for col in ex_df2.columns.values]
+#print(ex_df2.columns)
+print(ex_df2)#정리
