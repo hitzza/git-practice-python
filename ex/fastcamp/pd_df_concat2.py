@@ -38,3 +38,4 @@ df1 = pd.DataFrame({'ID' : [1,2,3,4,5], '가입일' : ['2021-01-02', '2021-01-04
 df2 = pd.DataFrame({'구매순서' : [1,2,3,4,5], 'ID' : [1,1,2,2,3], '구매월' : [1,1,2,2,3], '금액' : [1000,1500,2000,3000,4000]})
 
 print(pd.merge(df1,df2, how='outer', on= 'ID'))
+print(pd.merge(df1,df2, how='left', on= 'ID'))
