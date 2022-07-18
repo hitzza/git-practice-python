@@ -10,11 +10,10 @@ print(df.isnull().sum())#null값 개수 확인
 df.dropna(inplace=True)
 print(df)
 '''
-'''
 df = pd.DataFrame({'a': [1,1,3,4,5], 'b':[2,3,np.NaN, 3, 4], 'c': [3,4,7,6,4]})
 print(df.dropna(axis=1))#열을 기준으로 결측값 지우기
-print(df.fillna(0))#결측값 채우기(0)
-'''
+#print(df.fillna(0))#결측값 채우기(0)
+
 '''
 df = pd.DataFrame({'a': [1,1,3,4,np.NaN], 'b': [2,3,np.NaN,np.NaN, 4], 'c': [np.NaN, 4,1,1,4]})
 
@@ -31,8 +30,10 @@ df.fillna(method='bfill',inplace=True)
 df.fillna(method='ffill',inplace=True)
 print(df)
 '''
+'''
 df = pd.DataFrame({'a': [1,1,3,4,np.NaN], 'b': [2,3,np.NaN,np.NaN, 4], 'c': [np.NaN, 4,1,1,4]})
 print(df.fillna(df.mean()))#각 컬럼의 평균값으로 대체
 print(df.fillna(df.mean()['a']))#a 컬럼의 평균값으로 대체
 #문제 b,c의 결측값들을 각 컬럼의 평균으로 치환하시오
 print(df.fillna(df.mean()[['b','c']]))
+'''

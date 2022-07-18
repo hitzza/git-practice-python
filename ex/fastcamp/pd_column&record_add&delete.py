@@ -41,5 +41,6 @@ df = pd.DataFrame({'a' : [1,1,3,4,5], 'b' : [2,3,2,3,4], 'c' : [3,4,7,6,4]})
 #df = df.drop(df[df['a']<4].index)
 #print(df)
 #문제 a가 3미만이고 c가 4인 레코드를 삭제하시오
-df = df.drop(df[(df['a']<3) & (df['c']==4)].index)#*************
+#df = df.drop(df[(df['a']<3) & (df['c']==4)].index)#*************
+df = df[(df['a']<3) & (df['c']==4)]
 print(df)
